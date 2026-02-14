@@ -1,0 +1,234 @@
+---
+---
+
+@use "sass:math";
+
+// OSWG stylesheet - calculated styling for otherselvesworking.group
+// Uses SCSS variables and functions for maintainable, proportional design
+
+// Base units (Twenty Twelve uses 14px base, 24px line-height)
+$rembase: 14;
+$line-height: 24;
+
+@function rem($px) {
+  @return math.div($px, $rembase) * 1rem;
+}
+
+// Spacing rhythm
+$space-sm: rem(24);
+$space-md: rem(48);
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,400&display=swap");
+
+@import "theme";
+
+// Font variables (use var(--font-base) etc. for consistency)
+:root {
+  --font-base: "Nunito Sans";
+  --font-headings: "Nunito Sans";
+  --font-input: "Nunito Sans";
+}
+
+// Body and content font
+body,
+#content,
+.entry-content,
+.post-content,
+.page-content,
+.post-excerpt,
+.entry-summary,
+.entry-excerpt,
+.widget-area,
+.widget,
+.sidebar,
+#sidebar,
+footer,
+.footer,
+#footer,
+.site-footer,
+#site-footer,
+.entry-content p,
+.entry-content ol,
+.entry-content ul,
+.entry-content dl,
+.entry-content dt,
+.widget_text p,
+.widget_text ol,
+.widget_text ul,
+.widget_text dl,
+.widget_text dt,
+.widget-content .rssSummary {
+  font-family: var(--font-base);
+}
+
+// Headings
+#site-title,
+.site-title,
+#site-title a,
+.site-title a,
+.entry-title,
+.entry-title a,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.widget-title,
+.elementor-heading-title {
+  font-family: var(--font-headings);
+  font-style: normal;
+  font-weight: 200;
+}
+
+// Form elements
+button,
+.button,
+input,
+select,
+textarea,
+.wp-block-button,
+.wp-block-button__link {
+  font-family: var(--font-input);
+}
+
+// Page titles - use weight 100 (Thin) now that it's loaded
+.wp-block-post-title,
+.wp-block-post-title a,
+.entry-title,
+.entry-title a,
+.post-title,
+.post-title a,
+.page-title,
+.entry-content h1,
+#content h1,
+.type-post h1,
+.type-page h1,
+.elementor h1 {
+  font-weight: 100;
+  font-size: 2rem;
+  font-family: var(--font-headings);
+}
+
+// OSWG custom overrides
+@media only screen and (min-width: 600px) {
+  #page {
+    background-image: url('{{ "/assets/images/oswg_notext.png" | relative_url }}');
+    background-size: 12.5%;
+    background-position: 95% 1%;
+    background-repeat: no-repeat;
+  }
+}
+
+// Nav: override theme's border-top (cascade wins, no !important)
+#site-navigation div.nav-menu ul,
+.main-navigation ul.nav-menu,
+.main-navigation div.nav-menu > ul {
+  border-top: none;
+}
+
+// Block layout (columns, quotes, groups)
+.block-columns {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (min-width: 782px) {
+    flex-wrap: nowrap;
+  }
+
+  .block-column {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  @media (max-width: 781px) {
+    &:not(.columns-stack-off) > .block-column {
+      flex-basis: 100%;
+    }
+  }
+}
+
+// Blockquotes - reduce top spacing for normal flow
+.block-quote,
+.entry-content blockquote,
+.comment-content blockquote,
+.wp-block-quote {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.block-quote {
+  border: none;
+  margin: 0 0 $space-sm;
+  padding: 0 $space-sm $space-sm;
+  font-style: italic;
+  font-size: 0.95rem;
+
+  cite,
+  footer {
+    display: block;
+    font-size: 0.8125em;
+    color: currentColor;
+    font-style: italic;
+  }
+
+  .front-quote {
+    padding: $space-sm;
+  }
+
+}
+
+
+.block-group {
+  box-sizing: border-box;
+}
+
+.columns-nowrap {
+  flex-wrap: nowrap;
+}
+
+.block-group__inner.layout-constrained {
+  position: relative;
+}
+
+// Footer/sidebar links - horizontal list with ample spacing
+.widget-area .widget ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $space-sm $space-md;
+  list-style: none;
+  list-style-type: none;
+  width: 80%;
+  margin: 0 auto;
+  padding: 0;
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+// Center footer content (colophon + widget area) - override theme float/width
+.template-front-page .widget-area .widget {
+  float: none;
+  width: 100%;
+  max-width: 100%;
+}
+
+#colophon {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+}
+
+.mission-home {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 1.2rem;
+}

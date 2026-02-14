@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<h1>{{ page.title }}</h1>
+<div class="entry-content">
+  <div class="block-group">
+    <div class="block-group__inner layout-constrained">
+      <div class="block-columns layout-flex columns-nowrap">
+        <div class="block-column layout-flow">
+          <p>{{ page.content | markdownify }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- .entry-content -->
