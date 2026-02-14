@@ -1,8 +1,6 @@
 ---
 ---
 
-@use "sass:math";
-
 // OSWG stylesheet - calculated styling for otherselvesworking.group
 // Uses SCSS variables and functions for maintainable, proportional design
 
@@ -11,7 +9,7 @@ $rembase: 14;
 $line-height: 24;
 
 @function rem($px) {
-  @return math.div($px, $rembase) * 1rem;
+  @return ($px / $rembase) * 1rem;
 }
 
 // Spacing rhythm
