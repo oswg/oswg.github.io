@@ -30,7 +30,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   engage in personal spiritual work as a condition of participation in the working 
   group, we also attempt to lighten the planetary vibration through all loving means 
   available to us.
-baseurl: "/_site" # the subpath of your site, e.g. /blog
+baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://oswg.github.io" # the base hostname & protocol for your site
 twitter_username:
 github_username:
